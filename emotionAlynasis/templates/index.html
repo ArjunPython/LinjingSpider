@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>情感分析</title>
+</head>
+<h1>情感分析</h1>
+<body>
+<p>情感分析展示接口，越接近0越消极，越接近1越积极</p>
+<select>
+    <option value ="comment">评论</option>
+    <option value ="news">新闻</option>
+</select>
+<form id="sentimentForm">
+<textarea id="sentence" name="sentence" placeholder="请输入待分析句子" style="width: 30%"></textarea>
+    <p><input type="button" id="score" value="评分"></input></p>
+    <p id="result_baidu">百度评分：</p>
+    <p id="result_model">模型结果：</p>
+    <p id="result_tag">标签：</p>
+</form>
+<h1>舆论得分历史</h1>
+<p style="border: solid;padding: 22px;">计算方法简述：<br>
+    score &#8733; a*(n/total) + b*(n_today/n_average)<br>
+    a,b: 系数<br>
+    n: 过去一个月负面评论数<br>
+    total: 过去一个月总评论数<br>
+    n_today: 当天负面评论数<br>
+    n_average: 方差最小的一个月的平均每天的负面评论个数</p>
+<p>选择公司名称:</p>
+<label for="company_name">平台名称 : </label><input id="company_name" name="company_name" type="text" list="comSel" />
+<datalist id="comSel">
+</datalist><button id="graphbutton">查看</button>
+<div id="main" style="width: 600px;height:400px;"></div>
+</body>
+<script src="../static/echarts.min.js"></script>
+<script src="../static/jquery3.1.js"></script>
+<script src="../static/index.js"></script>
+</html>
